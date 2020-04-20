@@ -38,23 +38,24 @@ case class AccountUser(statements: List[AccountStatement], idBank: BigInt) exten
       history.foreach(s => println(s"${s.date}   ${s.amount}    ${s.balance}"))
       println("\n")
     }
-  }
 }
 
 object TestAccount extends App {
   var myAccount = AccountUser(List.empty, 1545157654)
-  myAccount.printStatement
 
   // US 1
   //val updatedWithDeposit = myAccount.deposit(10000)
   //updatedWithDeposit.printStatement
   myAccount.deposit(10000)
-  myAccount.printStatement
+  myAccount.deposit(3000)
 
   // US 2
   // val updatedWithWithdrawal = updatedWithDeposit.withdrawal(1000).withdrawal(200)
   // updatedWithWithdrawal.printStatement
   myAccount.withdrawal(5000)
   myAccount.withdrawal(200)
+  myAccount.withdrawal(300)
+
+  // US 3
   myAccount.printStatement
 }
